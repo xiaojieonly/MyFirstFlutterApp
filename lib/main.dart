@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(new MyApp());
 
+Color iconColor = Colors.deepPurple;
 
 class MyApp extends StatelessWidget{
-
 
   @override
   Widget build(BuildContext context) {
@@ -66,20 +66,20 @@ class MyApp extends StatelessWidget{
     ),
   );
 
-  Color iconColor = Colors.deepPurple;
-  // Widget buttonSection = Container(
-  //   child: Row(
-  //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //     children: [
-  //       buildButtonColumn(Colors.black, Icons.call, 'CALL'),
-  //       buildButtonColumn(iconColor, Icons.near_me, 'ROUTE'),
-  //       buildButtonColumn(iconColor, Icons.share, 'SHARE'),
-  //     ],
-  //   ),
-  // );
+
+  Widget buttonSection = Container(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        buildButtonColumn(iconColor, Icons.call, 'CALL'),
+        buildButtonColumn(iconColor, Icons.near_me, 'ROUTE'),
+        buildButtonColumn(iconColor, Icons.share, 'SHARE'),
+      ],
+    ),
+  );
 
   //按钮生成函数
-  Column buildButtonColumn(Color Tcolor,IconData iconData,String labelString){
+  static Column buildButtonColumn(Color Tcolor,IconData iconData,String labelString){
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -99,8 +99,5 @@ class MyApp extends StatelessWidget{
       ],
     );
   }
-
-
-
-
 }
+
