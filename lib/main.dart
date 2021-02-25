@@ -3,12 +3,24 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(new MyApp());
 
-Color iconColor = Colors.deepPurple;
-
 class MyApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+
+    Color color = Theme.of(context).primaryColor;
+    Widget buttonSection = Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          buildButtonColumn(color, Icons.call, 'CALL'),
+          buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+          buildButtonColumn(color, Icons.share, 'SHARE'),
+        ],
+      ),
+    );
+
+
     return new MaterialApp(
       title: 'hello flutter',
       home: new Scaffold(
@@ -21,7 +33,7 @@ class MyApp extends StatelessWidget{
         body: new Column(
           children: [
             titleSection,
-            // buttonSection
+            buttonSection
           ],
         ),
       ),
@@ -67,16 +79,8 @@ class MyApp extends StatelessWidget{
   );
 
 
-  Widget buttonSection = Container(
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        buildButtonColumn(iconColor, Icons.call, 'CALL'),
-        buildButtonColumn(iconColor, Icons.near_me, 'ROUTE'),
-        buildButtonColumn(iconColor, Icons.share, 'SHARE'),
-      ],
-    ),
-  );
+
+
 
   //按钮生成函数
   static Column buildButtonColumn(Color Tcolor,IconData iconData,String labelString){
