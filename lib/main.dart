@@ -55,7 +55,13 @@ class _MyHomePageState extends State<MyHomePage>{
         ),
       ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context){
+              return NewRoute();
+            }
+          ));
+        },
         tooltip: '增加',
         child: new Icon(Icons.add),
       ),
@@ -63,4 +69,19 @@ class _MyHomePageState extends State<MyHomePage>{
   }
 }
 
+
+class NewRoute extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('新路由'),
+      ),
+      body: Center(
+        child: Text('这是一个新页面'),
+      ),
+    );
+  }
+
+}
 
