@@ -1,87 +1,63 @@
+
+
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget{
-
   @override
   Widget build(BuildContext context) {
-      return new MaterialApp(
-        title: 'Flutter Demo2',
-        theme: new ThemeData(
-          primaryColor: Colors.blueAccent
+    // TODO: implement build
+    return new MaterialApp(
+      title: 'personl song',
+      home: new Scaffold(
+        appBar: new AppBar(
+          title: new Text(
+            'what\'s you say?'
+          ),
         ),
-        home: new MyHomePage(title:'Demo Page One'),
-      );
-  }
-}
-
-
-class MyHomePage extends StatefulWidget{
-  final String title;
-  MyHomePage({Key key,this.title}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => new _MyHomePageState();
-
-}
-
-class _MyHomePageState extends State<MyHomePage>{
-  int _counter = 0;
-  
-  void _incrementCounter(){
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
-      ),
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Text('你点了按钮的次数：'),
-            new Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            )
-          ],
-        ),
-      ),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context){
-              return NewRoute();
-            }
-          ));
-        },
-        tooltip: '增加',
-        child: new Icon(Icons.add),
+        body: new MyHomeContent(),
       ),
     );
   }
 }
 
+class MyHomeContent extends StatelessWidget{
 
-class NewRoute extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('新路由'),
-      ),
-      body: Center(
-        child: Text('这是一个新页面'),
-      ),
+    // TODO: implement build
+    return new Center(
+      child: new Container(
+        child: new Text(
+          "套娃,123456789,,,换行换行换行。自动换行~最大行数3，超过时使用...表示~~~~~测试和数据健康的回复",
+          textAlign: TextAlign.left,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 3,
+          style: new TextStyle(
+            fontSize: 20,
+            color: Colors.deepOrange,
+            fontWeight: FontWeight.w600,
+            decoration: TextDecoration.underline,
+            decorationColor: Colors.deepPurple
+          ),
+        ),
+        height: 300.0,
+        width: 300.0,
+        decoration: new BoxDecoration(
+          color: Colors.cyanAccent,
+          border: new Border.all(
+            color: Colors.black,
+            width: 10
+          )
+        ),
+      )
     );
   }
 
 }
+
 

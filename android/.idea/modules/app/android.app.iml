@@ -4,7 +4,7 @@
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
         <option name="GRADLE_PROJECT_PATH" value=":app" />
-        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="4.1.1" />
+        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="3.5.0" />
         <option name="LAST_KNOWN_AGP_VERSION" value="4.1.1" />
       </configuration>
     </facet>
@@ -25,9 +25,28 @@
       </configuration>
     </facet>
     <facet type="kotlin-language" name="Kotlin">
-      <configuration version="3" useProjectSettings="false">
-        <compilerSettings />
-        <compilerArguments />
+      <configuration version="3" platform="JVM 1.6" allPlatforms="JVM [1.6]" useProjectSettings="false">
+        <compilerSettings>
+          <option name="additionalArguments" value="-Xallow-no-source-files" />
+        </compilerSettings>
+        <compilerArguments>
+          <option name="destination" value="$MODULE_DIR$/../../../../build/app/tmp/kotlin-classes/debug" />
+          <option name="classpath" value="$MODULE_DIR$/../../../../build/app/intermediates/flutter/debug/libs.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/506a68345312fab993c85c0d402194ac/transformed/jetified-flutter_embedding_debug-1.0.0-2f0af3715217a0c2ada72c717d4ed9178d68f6ed.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/io.flutter/armeabi_v7a_debug/1.0.0-2f0af3715217a0c2ada72c717d4ed9178d68f6ed/121af36e209588e4812442cbc0fe86b34bf9ba8e/armeabi_v7a_debug-1.0.0-2f0af3715217a0c2ada72c717d4ed9178d68f6ed.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/io.flutter/arm64_v8a_debug/1.0.0-2f0af3715217a0c2ada72c717d4ed9178d68f6ed/df299d24517a75cb561ae5bbc2885a9ba6cb1143/arm64_v8a_debug-1.0.0-2f0af3715217a0c2ada72c717d4ed9178d68f6ed.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/io.flutter/x86_64_debug/1.0.0-2f0af3715217a0c2ada72c717d4ed9178d68f6ed/942f5658aef7d4bc2d47b27450d911750935aee3/x86_64_debug-1.0.0-2f0af3715217a0c2ada72c717d4ed9178d68f6ed.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/io.flutter/x86_debug/1.0.0-2f0af3715217a0c2ada72c717d4ed9178d68f6ed/75e14ba6a1c3c3b815dd31d2e3ffdd14094e8111/x86_debug-1.0.0-2f0af3715217a0c2ada72c717d4ed9178d68f6ed.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common-java8/2.2.0/cd3478503da69b1a7e0319bd2d1389943db9b364/lifecycle-common-java8-2.2.0.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/0ad262a9511fe0323591f951561a8214/transformed/fragment-1.1.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/a3597dd58abeafea6ba354e91423d182/transformed/activity-1.0.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/409ff9af87f2f4f2f2629237649dc372/transformed/viewpager-1.0.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/0886d357c33373df7caee4eb0702cde1/transformed/loader-1.0.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/00ca8ec5189979bc30a7149afde547b5/transformed/customview-1.0.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/0af46e38d04798a4f205dbf00a18977f/transformed/core-1.1.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/8ac2da54a8b84230cdff10cd235d0b25/transformed/lifecycle-runtime-2.2.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/81d316a096c4297254eb8a363528716a/transformed/savedstate-1.0.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/edcf42ecd19aef1b357da1b2f91c24f4/transformed/lifecycle-livedata-2.0.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/13bb34cde65e6ae39b973ebcaf97ea49/transformed/lifecycle-livedata-core-2.0.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.2.0/4ef09a745007778eef83b92f8f23987a8ea59496/lifecycle-common-2.2.0.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/da62ebc95c8a75ef887031dcb0b2ab25/transformed/core-runtime-2.0.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.1.0/b3152fc64428c9354344bd89848ecddc09b6f07e/core-common-2.1.0.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/3d688ee025af3ce82dfb65d5010bc8df/transformed/versionedparcelable-1.1.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/150d9de03a421fcf031dfc290999c6e5/transformed/lifecycle-viewmodel-2.1.0/jars/classes.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/androidx.annotation/annotation/1.1.0/e3a6fb2f40e3a3842e6b7472628ba4ce416ea4c8/annotation-1.1.0.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.3.50/50ad05ea1c2595fb31b800e76db464d08d599af3/kotlin-stdlib-jdk7-1.3.50.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.50/b529d1738c7e98bbfa36a4134039528f2ce78ebf/kotlin-stdlib-1.3.50.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.50/3d9cd3e1bc7b92e95f43d45be3bfbcf38e36ab87/kotlin-stdlib-common-1.3.50.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar;E:/Android-SDK/platforms/android-29/android.jar;E:/Android-SDK/build-tools/28.0.3/core-lambda-stubs.jar" />
+          <option name="noStdlib" value="true" />
+          <option name="noReflect" value="true" />
+          <option name="moduleName" value="app_debug" />
+          <option name="languageVersion" value="1.3" />
+          <option name="apiVersion" value="1.3" />
+          <option name="pluginOptions">
+            <array />
+          </option>
+          <option name="pluginClasspaths">
+            <array />
+          </option>
+          <option name="errors">
+            <ArgumentParseErrors />
+          </option>
+        </compilerArguments>
       </configuration>
     </facet>
   </component>
@@ -41,15 +60,15 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/.gradle" />
     </content>
-    <content url="file://$MODULE_DIR$/../../../../build/app/generated/aidl_source_output_dir/debug/out" />
-    <content url="file://$MODULE_DIR$/../../../../build/app/generated/aidl_source_output_dir/debugAndroidTest/out" />
+    <content url="file://$MODULE_DIR$/../../../../build/app/generated/aidl_source_output_dir/debug/compileDebugAidl/out" />
+    <content url="file://$MODULE_DIR$/../../../../build/app/generated/aidl_source_output_dir/debugAndroidTest/compileDebugAndroidTestAidl/out" />
     <content url="file://$MODULE_DIR$/../../../../build/app/generated/ap_generated_sources/debug/out">
       <sourceFolder url="file://$MODULE_DIR$/../../../../build/app/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
     </content>
     <content url="file://$MODULE_DIR$/../../../../build/app/generated/ap_generated_sources/debugAndroidTest/out" />
     <content url="file://$MODULE_DIR$/../../../../build/app/generated/ap_generated_sources/debugUnitTest/out" />
-    <content url="file://$MODULE_DIR$/../../../../build/app/generated/renderscript_source_output_dir/debug/out" />
-    <content url="file://$MODULE_DIR$/../../../../build/app/generated/renderscript_source_output_dir/debugAndroidTest/out" />
+    <content url="file://$MODULE_DIR$/../../../../build/app/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out" />
+    <content url="file://$MODULE_DIR$/../../../../build/app/generated/renderscript_source_output_dir/debugAndroidTest/compileDebugAndroidTestRenderscript/out" />
     <content url="file://$MODULE_DIR$/../../../../build/app/generated/res/resValues/androidTest/debug" />
     <content url="file://$MODULE_DIR$/../../../../build/app/generated/res/resValues/debug">
       <sourceFolder url="file://$MODULE_DIR$/../../../../build/app/generated/res/resValues/debug" type="java-resource" />
