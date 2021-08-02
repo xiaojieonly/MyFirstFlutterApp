@@ -4,3 +4,8 @@ enum Place {
   left,
   right,
 }
+
+enum PlaceStyle {
+  paste,
+  intrude,
+}

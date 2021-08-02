@@ -25,9 +25,28 @@
       </configuration>
     </facet>
     <facet type="kotlin-language" name="Kotlin">
-      <configuration version="3" useProjectSettings="false">
-        <compilerSettings />
-        <compilerArguments />
+      <configuration version="3" platform="JVM 1.6" allPlatforms="JVM [1.6]" useProjectSettings="false">
+        <compilerSettings>
+          <option name="additionalArguments" value="-Xallow-no-source-files" />
+        </compilerSettings>
+        <compilerArguments>
+          <option name="destination" value="$MODULE_DIR$/../../../../build/app/tmp/kotlin-classes/debug" />
+          <option name="classpath" value="$MODULE_DIR$/../../../../../../Program Files/gradle6.7.1/caches/transforms-3/250c187816bbc3c9edcabf69da25241c/transformed/jetified-flutter_embedding_debug-1.0.0-241c87ad800beeab545ab867354d4683d5bfb6ce.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/59b9d0f5f18267ce25a9d25feb0a8fa7/transformed/jetified-armeabi_v7a_debug-1.0.0-241c87ad800beeab545ab867354d4683d5bfb6ce.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/00751a1316eb65f5d87edb0e58c3cad6/transformed/jetified-arm64_v8a_debug-1.0.0-241c87ad800beeab545ab867354d4683d5bfb6ce.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/d00611197f4c8f513a26695119186046/transformed/jetified-x86_64_debug-1.0.0-241c87ad800beeab545ab867354d4683d5bfb6ce.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/0477a527adf71009a9d5868bf0dbc723/transformed/jetified-x86_debug-1.0.0-241c87ad800beeab545ab867354d4683d5bfb6ce.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common-java8/2.2.0/cd3478503da69b1a7e0319bd2d1389943db9b364/lifecycle-common-java8-2.2.0.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/399378cbeeb39164e55da250c91af26f/transformed/fragment-1.1.0-api.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/561dbd6652bf640d29e41da177293070/transformed/jetified-activity-1.0.0-api.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/2bffe87fd7965f718b025c6dadd0ca51/transformed/viewpager-1.0.0-api.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/a7e4e54109dbbf0feb7e1092284d01dd/transformed/loader-1.0.0-api.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/ae079143e8f7992643f547de98494b6b/transformed/customview-1.0.0-api.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/773169104c344967b07f888d9afef1d9/transformed/core-1.1.0-api.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/f733e3791c2c2286dd877bd56fb8c8d9/transformed/lifecycle-runtime-2.2.0-api.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/3cdca23f8d0d72c356c39397fcece486/transformed/jetified-savedstate-1.0.0-api.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/b7e1868590bec6e2472f4b0e45a71b5a/transformed/lifecycle-livedata-2.0.0-api.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/db4395db1aa1c13cb3b54003cb55f8e9/transformed/lifecycle-livedata-core-2.0.0-api.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.2.0/4ef09a745007778eef83b92f8f23987a8ea59496/lifecycle-common-2.2.0.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/229a928423c7b43a68d06162f067d800/transformed/core-runtime-2.0.0-api.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.1.0/b3152fc64428c9354344bd89848ecddc09b6f07e/core-common-2.1.0.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/2c74e588d74fa9ca025d48776352be74/transformed/versionedparcelable-1.1.0-api.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/068f72d15ba8c375968096842738036f/transformed/lifecycle-viewmodel-2.1.0-api.jar;E:/Program Files/gradle6.7.1/caches/modules-2/files-2.1/androidx.annotation/annotation/1.1.0/e3a6fb2f40e3a3842e6b7472628ba4ce416ea4c8/annotation-1.1.0.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/3aae0b635307f25b1565ca9ba79f7c3d/transformed/jetified-kotlin-stdlib-jdk7-1.3.50.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/17c2e97e7630a942988c237a7fb1d046/transformed/jetified-kotlin-stdlib-1.3.50.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/6c0ea7f312568691621c4871b7eb1550/transformed/jetified-kotlin-stdlib-common-1.3.50.jar;E:/Program Files/gradle6.7.1/caches/transforms-3/4497d4a2b42c47b4fcaba1928a0fcb0f/transformed/jetified-annotations-13.0.jar;E:/Android-SDK/platforms/android-29/android.jar;E:/Android-SDK/build-tools/29.0.2/core-lambda-stubs.jar" />
+          <option name="noStdlib" value="true" />
+          <option name="noReflect" value="true" />
+          <option name="moduleName" value="app_debug" />
+          <option name="languageVersion" value="1.3" />
+          <option name="apiVersion" value="1.3" />
+          <option name="pluginOptions">
+            <array />
+          </option>
+          <option name="pluginClasspaths">
+            <array />
+          </option>
+          <option name="errors">
+            <ArgumentParseErrors />
+          </option>
+        </compilerArguments>
       </configuration>
     </facet>
   </component>

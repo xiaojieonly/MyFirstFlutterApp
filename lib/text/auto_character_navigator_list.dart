@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_app/text/property/alphabet_child_style.dart';
 import 'emu/place.dart';
 
 ///  一个使用极为简单的字母导航栏
 ///  A very simple alphabet navigation bar
 ///
 class AutoCharacterNavigatorList extends StatefulWidget {
-
   /// 暂时无法使用
   /// Temporarily unavailable
   ///
@@ -16,6 +15,9 @@ class AutoCharacterNavigatorList extends StatefulWidget {
   /// The default position is the right side of the component
   @deprecated
   final Place place;
+
+  @deprecated
+  final PlaceStyle placeStyle;
 
   /// 这是需要导航的内容
   /// 出于安全性及健壮性考虑：[children]的长度需要与[childrenNavigator]的长度一致
@@ -37,11 +39,15 @@ class AutoCharacterNavigatorList extends StatefulWidget {
   /// This is required content
   final List<String> childrenNavigator;
 
+  final AlphabetChildStyle? alphabetChildStyle;
+
   AutoCharacterNavigatorList({
     Key? key,
     required this.children,
     required this.childrenNavigator,
     this.place = Place.right,
+    this.alphabetChildStyle,
+    this.placeStyle = PlaceStyle.paste,
   })  : assert(children.length == childrenNavigator.length),
         super(key: key);
 
@@ -78,7 +84,6 @@ class _AutoCharacterNavigatorListState
     });
   }
 
-
   @override
   void dispose() {
     super.dispose();
@@ -106,7 +111,7 @@ class _AutoCharacterNavigatorListState
           top: 20,
           child: Container(
             width: 20,
-            height: 540,
+            // height: 540,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: _alphabetChildren,
@@ -119,7 +124,7 @@ class _AutoCharacterNavigatorListState
           top: 20,
           child: Container(
             width: 20,
-            height: 540,
+            // height: 540,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: _alphabetChildren,
@@ -160,6 +165,7 @@ class _AutoCharacterNavigatorListState
         AlphabetItem(
           key: global,
           index: i,
+          alphabetChildStyle: widget.alphabetChildStyle ?? AlphabetChildStyle(),
           sizeCallBack: (size, index) {},
           name: widget.childrenNavigator[i],
           clickCallBack: (index) {
@@ -222,7 +228,6 @@ class _AutoCharacterNavigatorListState
   }
 
   void _listChange(double offset) {
-
     if (offset > _jumpPosition[_selectIndex]) {
       _alphabetKeys[_selectIndex + 1].currentState!.reload(_selectIndex + 1);
       _alphabetKeys[_selectIndex].currentState!.reload(_selectIndex + 1);
@@ -232,8 +237,7 @@ class _AutoCharacterNavigatorListState
         _alphabetKeys[_selectIndex - 1].currentState!.reload(_selectIndex - 1);
         _alphabetKeys[_selectIndex].currentState!.reload(_selectIndex - 1);
         _selectIndex--;
-      } else if (_selectIndex > 1 &&
-          offset < _jumpPosition[_selectIndex - 2]) {
+      } else if (_selectIndex > 1 && offset < _jumpPosition[_selectIndex - 2]) {
         _alphabetKeys[_selectIndex - 1].currentState!.reload(_selectIndex - 1);
         _alphabetKeys[_selectIndex].currentState!.reload(_selectIndex - 1);
         _selectIndex--;
@@ -268,14 +272,9 @@ class _ChildState extends State<Child> {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       if (!_alreadyCallback) {
-        // Size size;
-        // if (context.findRenderObject() == null) {
-        //   size = Size(0, 0);
-        // } else {
-        //   size = ;
-        // }
-        widget.sizeCallBack(context.findRenderObject()!.semanticBounds.size, widget.index);
-        _alreadyCallback=true;
+        widget.sizeCallBack(
+            context.findRenderObject()!.semanticBounds.size, widget.index);
+        _alreadyCallback = true;
       }
     });
   }
@@ -291,6 +290,7 @@ typedef ClickCallBack = void Function(int index);
 class AlphabetItem extends StatefulWidget {
   final String name;
   final int index;
+  final AlphabetChildStyle alphabetChildStyle;
   final SizeCallBack sizeCallBack;
   final ClickCallBack clickCallBack;
 
@@ -300,6 +300,7 @@ class AlphabetItem extends StatefulWidget {
     required this.index,
     required this.sizeCallBack,
     required this.clickCallBack,
+    required this.alphabetChildStyle,
   }) : super(key: key);
 
   @override
@@ -310,11 +311,15 @@ class _AlphabetItemState extends State<AlphabetItem> {
   bool _isSelect = false;
 
   Color get _getBgColor {
-    return _isSelect ? Colors.black : Colors.white;
+    return _isSelect
+        ? widget.alphabetChildStyle.selectBackgroundColor
+        : widget.alphabetChildStyle.unSelectBackgroundColor;
   }
 
   Color get _getTextColor {
-    return _isSelect ? Colors.white : Colors.black;
+    return _isSelect
+        ? widget.alphabetChildStyle.selectTextColor
+        : widget.alphabetChildStyle.unSelectTextColor;
   }
 
   @override
@@ -335,25 +340,31 @@ class _AlphabetItemState extends State<AlphabetItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        widget.clickCallBack(widget.index);
-      },
-      child: Container(
-        width: 16,
-        height: 16,
-        decoration: BoxDecoration(
-          color: _getBgColor,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          widget.name,
-          style: TextStyle(
-            color: _getTextColor,
+        onTap: () {
+          widget.clickCallBack(widget.index);
+        },
+        child: Container(
+          margin: widget.alphabetChildStyle.margin ?? EdgeInsets.only(
+            top: 10,
           ),
-        ),
-      ),
-    );
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              width: widget.alphabetChildStyle.width,
+              height: widget.alphabetChildStyle.height,
+              color: _getBgColor,
+              alignment: Alignment.center,
+              child: Text(
+                widget.name,
+                style: TextStyle(
+                  color: _getTextColor,
+                  fontSize: 10,
+                  decoration: widget.alphabetChildStyle.textDecoration,
+                ),
+              ),
+            ),
+          ),
+        ));
   }
 
   void reload(index) {
