@@ -1,7 +1,10 @@
 # flutter_app
 
 MyFlutterApp
-
+* 一个用法较为简单的字符自动导航栏组件.
+* 最简单的用法为：传入需要导航的组件列表以及对应的字符列表即可。
+* 内部有较为丰富的自定义选项，使用者可以查看内部注释
+* 可能会有bug，还请谅解
 ## Getting Started
 
 This project is a starting point for a Flutter application.
