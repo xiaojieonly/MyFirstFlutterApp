@@ -38,7 +38,7 @@ class MyHomeContent extends StatelessWidget{
         },
         child: new Container(
           child: new Text(
-            "套娃,123456789,,,换行换行换行。自动换行~最大行数3，超过时使用...表示~~~~~测试和数据健康的回复",
+            "点击这段文字跳转至list列表",
             textAlign: TextAlign.left,
             overflow: TextOverflow.ellipsis,
             maxLines: 3,
