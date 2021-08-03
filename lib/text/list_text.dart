@@ -2,10 +2,10 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/text/property/position.dart';
+import 'package:flutter_easy_navigation_list/flutter_easy_navigation_list.dart';
 
-import 'auto_character_navigator_list.dart';
-import 'property/alphabet_child_style.dart';
+
+
 
 class ListText extends StatefulWidget {
   ListText({Key? key}) : super(key: key);
