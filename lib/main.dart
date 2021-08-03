@@ -1,7 +1,3 @@
-
-
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/text/list_text.dart';
@@ -13,13 +9,14 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return new MaterialApp(
-      title: 'personl song',
+      title: 'personal song',
       home: new Scaffold(
         appBar: new AppBar(
           title: new Text(
             'what\'s you say?'
           ),
         ),
+        // body: new ListText(),
         body: new MyHomeContent(),
       ),
     );

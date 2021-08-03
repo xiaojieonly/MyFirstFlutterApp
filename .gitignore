@@ -1,2 +1,4 @@
 /.idea/
 /android/.idea/
+/.idea/libraries/
+/android/gradle/wrapper/

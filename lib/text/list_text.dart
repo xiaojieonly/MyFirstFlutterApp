@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/text/property/position.dart';
 
 import 'auto_character_navigator_list.dart';
 import 'property/alphabet_child_style.dart';
@@ -58,8 +59,17 @@ class _ListTextState extends State<ListText> {
     return Container(
       color: Colors.blue,
       child: AutoCharacterNavigatorList(
-        alphabetChildStyle: AlphabetChildStyle(
+        // alphabetDirection: Axis.horizontal,
+        alphabetChildrenPosition: Position(
+          left: 16,
+          top: 30,
+        ),
+        alphabetChildStyle: AlphabetChildrenStyle(
           unSelectBackgroundColor: Colors.deepOrange,
+          margin: EdgeInsets.zero,
+          totalWidth: 375,
+          totalHeight: 16,
+          alphabetDirection: Axis.horizontal,
         ),
         childrenNavigator: naList,
         children: chList,

@@ -1,24 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/text/property/alphabet_child_style.dart';
-import 'emu/place.dart';
+import 'property/position.dart';
 
 ///  一个使用极为简单的字母导航栏
 ///  A very simple alphabet navigation bar
 ///
 class AutoCharacterNavigatorList extends StatefulWidget {
-  /// 暂时无法使用
-  /// Temporarily unavailable
-  ///
-  /// 这是非必填的属性
-  /// 默认位置为组件右侧
-  /// This is an optional attribute
-  /// The default position is the right side of the component
-  @deprecated
-  final Place place;
-
-  @deprecated
-  final PlaceStyle placeStyle;
-
   /// 这是需要导航的内容
   /// 出于安全性及健壮性考虑：[children]的长度需要与[childrenNavigator]的长度一致
   /// This is contents what needs to be navigated
@@ -39,15 +28,23 @@ class AutoCharacterNavigatorList extends StatefulWidget {
   /// This is required content
   final List<String> childrenNavigator;
 
-  final AlphabetChildStyle? alphabetChildStyle;
+  final AlphabetChildrenStyle? alphabetChildStyle;
+
+  /// 这是非必填的属性
+  /// 默认位置为组件右侧
+  /// 定义导航组件的堆叠位置
+  ///
+  /// This is an optional attribute
+  /// The default position is the right side of the component
+  /// Define the stacking position of navigation components
+  final Position? alphabetChildrenPosition;
 
   AutoCharacterNavigatorList({
     Key? key,
     required this.children,
     required this.childrenNavigator,
-    this.place = Place.right,
     this.alphabetChildStyle,
-    this.placeStyle = PlaceStyle.paste,
+    this.alphabetChildrenPosition,
   })  : assert(children.length == childrenNavigator.length),
         super(key: key);
 
@@ -70,9 +67,12 @@ class _AutoCharacterNavigatorListState
 
   bool _running = false;
 
+  late AlphabetChildrenStyle _alphabetChildStyle;
+
   @override
   void initState() {
     super.initState();
+    _alphabetChildStyle = widget.alphabetChildStyle ?? AlphabetChildrenStyle();
     _jumpPosition = List.filled(widget.children.length, 0, growable: false);
     _initJump();
     _initAlphabet();
@@ -92,46 +92,201 @@ class _AutoCharacterNavigatorListState
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        ListView(
-          controller: _scrollController,
-          children: _children,
-        ),
-        _navigatorList(),
-      ],
-    );
+    return _bodyBuild();
   }
 
-  Positioned _navigatorList() {
-    switch (widget.place) {
-      case Place.right:
-        return Positioned(
-          right: 16,
-          top: 20,
-          child: Container(
-            width: 20,
-            // height: 540,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: _alphabetChildren,
-            ),
-          ),
-        );
-      default:
-        return Positioned(
-          right: 16,
-          top: 20,
-          child: Container(
-            width: 20,
-            // height: 540,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: _alphabetChildren,
-            ),
-          ),
-        );
+  Widget _bodyBuild() {
+    return _switchFormPaste();
+    // if (widget.placeStyle == PlaceStyle.paste) {
+    //
+    // } else {
+    //   return _switchFormIntrude();
+    // }
+  }
+
+  Widget _switchFormPaste() {
+    Position position;
+    if (widget.alphabetChildrenPosition == null) {
+      position = Position(right: 16, top: 20);
+    } else {
+      position = widget.alphabetChildrenPosition!;
     }
+
+    if (_alphabetChildStyle.alphabetDirection == Axis.vertical) {
+      return Stack(
+        children: [
+          ListView(
+            controller: _scrollController,
+            children: _children,
+          ),
+          Positioned(
+            left: position.left,
+            top: position.top,
+            right: position.right,
+            bottom: position.bottom,
+            width: position.width,
+            height: position.height,
+            child: Container(
+              width: _alphabetChildStyle.totalWidth,
+              height: _alphabetChildStyle.totalHeight,
+              color: _alphabetChildStyle.childrenBackgroundColor,
+              // height: 540,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: _alphabetChildren,
+                ),
+              ),
+            ),
+          )
+        ],
+      );
+    } else {
+      return Stack(
+        children: [
+          ListView(
+            controller: _scrollController,
+            children: _children,
+          ),
+          Positioned(
+            left: position.left,
+            top: position.top,
+            right: position.right,
+            bottom: position.bottom,
+            width: position.width,
+            height: position.height,
+            child: Container(
+              width: _alphabetChildStyle.totalWidth,
+              height: _alphabetChildStyle.totalHeight,
+              color: _alphabetChildStyle.childrenBackgroundColor,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: _alphabetChildren,
+                ),
+              ),
+            ),
+          )
+        ],
+      );
+    }
+  }
+
+  /// 侵入式布局有较为严重的bug
+  /// 主要是我太菜了。
+  ///
+  /// Intrusive layout has more serious bugs
+  /// Mainly because I am too food.
+  @deprecated
+  Widget _switchFormIntrude() {
+    // Position position;
+    // if (widget.alphabetPosition == null) {
+    //   position = Position(right: 16, top: 20);
+    // } else {
+    //   position = widget.alphabetPosition!;
+    // }
+
+    // if (widget.alphabetDirection == Axis.vertical) {
+    //   if (widget.place == Place.right) {
+    //     return Row(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       mainAxisAlignment: MainAxisAlignment.start,
+    //       children: [
+    //         ListView(
+    //           controller: _scrollController,
+    //           children: _children,
+    //         ),
+    //         Container(
+    //           width: _alphabetChildStyle.width,
+    //           // height: 540,
+    //           child: SingleChildScrollView(
+    //             child: Column(
+    //               mainAxisSize: MainAxisSize.min,
+    //               children: _alphabetChildren,
+    //             ),
+    //           ),
+    //         ),
+    //       ],
+    //     );
+    //   } else {
+    //     return Row(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       mainAxisAlignment: MainAxisAlignment.start,
+    //       children: [
+    //         Container(
+    //           width: _alphabetChildStyle.width,
+    //           // height: 540,
+    //           child: SingleChildScrollView(
+    //             child: Column(
+    //               mainAxisSize: MainAxisSize.min,
+    //               children: _alphabetChildren,
+    //             ),
+    //           ),
+    //         ),
+    //         ListView(
+    //           controller: _scrollController,
+    //           children: _children,
+    //         ),
+    //       ],
+    //     );
+    //   }
+    // } else {
+    //   if (widget.place == Place.top) {
+    //     return Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       mainAxisAlignment: MainAxisAlignment.start,
+    //       children: [
+    //         Container(
+    //           height: _alphabetChildStyle.height,
+    //           // height: 540,
+    //           child: SingleChildScrollView(
+    //             scrollDirection: Axis.horizontal,
+    //             child: Row(
+    //               mainAxisSize: MainAxisSize.min,
+    //               children: _alphabetChildren,
+    //             ),
+    //           ),
+    //         ),
+    //         Container(
+    //           // height: window.physicalSize.height-_alphabetChildStyle.height,
+    //           child: ListView(
+    //             controller: _scrollController,
+    //             children: _children,
+    //           ),
+    //         ),
+    //
+    //       ],
+    //     );
+    //   }else{
+    //     return Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       mainAxisAlignment: MainAxisAlignment.start,
+    //       children: [
+    //         Container(
+    //           // height: window.physicalSize.height-_alphabetChildStyle.height,
+    //           child: ListView(
+    //             controller: _scrollController,
+    //             children: _children,
+    //           ),
+    //         ),
+    //         Container(
+    //           height: _alphabetChildStyle.height,
+    //           // height: 540,
+    //           child: SingleChildScrollView(
+    //             scrollDirection: Axis.horizontal,
+    //             child: Row(
+    //               mainAxisSize: MainAxisSize.min,
+    //               children: _alphabetChildren,
+    //             ),
+    //           ),
+    //         ),
+    //       ],
+    //     );
+    //   }
+    // }
+
+    return Container();
   }
 
   void _initJump() {
@@ -165,13 +320,15 @@ class _AutoCharacterNavigatorListState
         AlphabetItem(
           key: global,
           index: i,
-          alphabetChildStyle: widget.alphabetChildStyle ?? AlphabetChildStyle(),
+          alphabetChildStyle: _alphabetChildStyle,
           sizeCallBack: (size, index) {},
           name: widget.childrenNavigator[i],
           clickCallBack: (index) {
-            _alphabetKeys[index].currentState!.reload(index);
-            _alphabetKeys[_selectIndex].currentState!.reload(index);
-            _wantToGo(index);
+            if (!_running) {
+              _alphabetKeys[index].currentState!.reload(index);
+              _alphabetKeys[_selectIndex].currentState!.reload(index);
+              _wantToGo(index);
+            }
           },
         ),
       );
@@ -290,7 +447,7 @@ typedef ClickCallBack = void Function(int index);
 class AlphabetItem extends StatefulWidget {
   final String name;
   final int index;
-  final AlphabetChildStyle alphabetChildStyle;
+  final AlphabetChildrenStyle alphabetChildStyle;
   final SizeCallBack sizeCallBack;
   final ClickCallBack clickCallBack;
 
@@ -340,31 +497,33 @@ class _AlphabetItemState extends State<AlphabetItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-          widget.clickCallBack(widget.index);
-        },
-        child: Container(
-          margin: widget.alphabetChildStyle.margin ?? EdgeInsets.only(
-            top: 10,
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Container(
-              width: widget.alphabetChildStyle.width,
-              height: widget.alphabetChildStyle.height,
-              color: _getBgColor,
-              alignment: Alignment.center,
-              child: Text(
-                widget.name,
-                style: TextStyle(
-                  color: _getTextColor,
-                  fontSize: 10,
-                  decoration: widget.alphabetChildStyle.textDecoration,
-                ),
+      onTap: () {
+        widget.clickCallBack(widget.index);
+      },
+      child: Container(
+        margin: widget.alphabetChildStyle.margin ??
+            EdgeInsets.only(
+              top: 10,
+            ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Container(
+            width: widget.alphabetChildStyle.childWidth,
+            height: widget.alphabetChildStyle.childHeight,
+            color: _getBgColor,
+            alignment: Alignment.center,
+            child: Text(
+              widget.name,
+              style: TextStyle(
+                color: _getTextColor,
+                fontSize: widget.alphabetChildStyle.testSize,
+                decoration: widget.alphabetChildStyle.textDecoration,
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   void reload(index) {
