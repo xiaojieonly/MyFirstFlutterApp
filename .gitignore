@@ -2,3 +2,6 @@
 /android/.idea/
 /.idea/libraries/
 /android/gradle/wrapper/
+
+.packages
+pubspec.lock
